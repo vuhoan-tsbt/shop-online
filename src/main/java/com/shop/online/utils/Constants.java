@@ -21,6 +21,8 @@ public class Constants {
     public static final String UNDERSCORE = "_";
     public static final String CONVERT_STRING = "\\";
     public static final String LESSON_FOLDER = "/image/lesson/";
+    public static final String HTTPS_STRING = "https://";
+    public static final String HTTP_STRING = "http://";
 
     /**
      * LOG LEVEL
