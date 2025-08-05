@@ -116,12 +116,12 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.2.7.Final</version>  <!-- Phiên bản mới nhất tương thích -->
+            <version>6.2.7.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>8.0.1.Final</version> <!-- Phiên bản phù hợp cho Spring Boot 3.x -->
+            <version>8.0.1.Final</version>
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.flywaydb</groupId>-->
