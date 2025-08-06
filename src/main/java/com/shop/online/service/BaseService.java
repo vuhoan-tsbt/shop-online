@@ -66,4 +66,39 @@ public class BaseService {
         return s3Url;
     }
 
+    public String convertKeyword(String keyword) {
+        if (keyword.contains("%")) {
+            keyword = keyword.replaceAll("%", "\\\\%");
+        }
+        if (keyword.contains("_")) {
+            keyword = keyword.replaceAll("_", "\\\\_");
+        }
+        keyword = keyword.trim();
+
+        return keyword;
+    }
+
+    public Sort buildSortJPA(String sortColumn, String sortType) {
+        Sort sort = Sort.by(Sort.Order.desc("id"));
+        if (sortType != null && sortColumn != null) {
+            switch (sortType) {
+                case Constants.SORT_ASC:
+                    sort = Sort.by(Sort.Order.asc(sortColumn));
+                    break;
+                case Constants.SORT_DESC:
+                    sort = Sort.by(Sort.Order.desc(sortColumn));
+                    break;
+            }
+        }
+        return sort;
+    }
+
+    public String buildCloudFrontImageUri(String uri) {
+        if (StringUtils.isNotEmpty(uri) && !uri.contains(Constants.HTTPS_STRING)) {
+            return Constants.HTTPS_STRING + this.cloudFrontImage + Constants.SLASH + uri;
+        } else {
+            return uri;
+        }
+    }
+
 }

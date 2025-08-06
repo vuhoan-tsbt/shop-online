@@ -7,16 +7,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "admin-product-shopping-controller")
 @RestController
-@RequestMapping("/api/v1/admin/product_shopping")
+@RequestMapping("/api/v1/admin/product-shopping")
 @RequiredArgsConstructor
-@PreAuthorize("hasAnyAuthority('SUPER_ADMIN', 'ROLE_SUB_ADMIN')")
+@PreAuthorize("hasAnyAuthority('ADMIN', 'SUB_ADMIN')")
 public class ShopProductController {
     private static final String GET_LIST_PRODUCT_SHOPPING = "/list";
     private static final String GET_BY_ID_PRODUCT_SHOPPING = "/by_id/{id}";
@@ -30,5 +27,17 @@ public class ShopProductController {
     @PostMapping(CREATE_PRODUCT_SHOPPING)
     public APIResponse<?> createProductShopping(@RequestBody @Valid ProductCreateRequest input) {
         return APIResponse.okStatus(productService.createProductShopping(input));
+    }
+
+    @GetMapping(GET_LIST_PRODUCT_SHOPPING)
+    public APIResponse<?> getListProductShopping(@RequestParam(required = false) Integer page,
+                                                 @RequestParam(required = false) Integer limit,
+                                                 @RequestParam(required = false) String keyword,
+                                                 @RequestParam(required = false) Float minAmount,
+                                                 @RequestParam(required = false) Float maxAmount,
+                                                 @RequestParam(required = false) Integer categoryShopId,
+                                                 @RequestParam(required = false) String sortColumn,
+                                                 @RequestParam(required = false) String sortType) {
+        return APIResponse.okStatus(productService.getListProductShopping(page, limit, keyword, minAmount, maxAmount, categoryShopId, sortColumn, sortType));
     }
 }

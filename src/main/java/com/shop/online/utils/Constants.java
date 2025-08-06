@@ -23,6 +23,8 @@ public class Constants {
     public static final String LESSON_FOLDER = "/image/lesson/";
     public static final String HTTPS_STRING = "https://";
     public static final String HTTP_STRING = "http://";
+    public static final String SORT_ASC = "ASC";
+    public static final String SORT_DESC = "DESC";
 
     /**
      * LOG LEVEL

@@ -7,8 +7,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "shop_product")
 @Entity
+@Table(name = "product")
 public class ShopProduct extends BaseEntity {
     @Column(name = "name")
     private String name;

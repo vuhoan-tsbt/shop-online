@@ -4,15 +4,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
 @EqualsAndHashCode(callSuper = true)
+@Data
 @Entity
 @Table(name = "product_size")
 public class ShopProductSize extends BaseEntity {
-
-    @ManyToOne
-    @JoinColumn(name = "shop_product_id")
-    private ShopProduct shopProduct;
 
     @Column(name = "size")
     private String size;
@@ -22,4 +18,8 @@ public class ShopProductSize extends BaseEntity {
 
     @Column(name = "inventory")
     private Long inventory;
+
+    @ManyToOne
+    @JoinColumn(name = "shop_product_id")
+    private ShopProduct shopProduct;
 }
