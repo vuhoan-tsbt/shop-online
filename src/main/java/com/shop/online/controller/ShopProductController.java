@@ -20,8 +20,6 @@ public class ShopProductController {
     private static final String CREATE_PRODUCT_SHOPPING = "/create";
     private static final String UPDATE_PRODUCT_SHOPPING = "/update/{id}";
     private static final String EDIT_STATUS_PRODUCT_SHOPPING = "/edit-status/{id}";
-    private static final String RECOMMEND_PRODUCT_SHOPPING = "/recommend/{id}";
-
     private final ShopProductService productService;
 
     @PostMapping(CREATE_PRODUCT_SHOPPING)
@@ -39,5 +37,20 @@ public class ShopProductController {
                                                  @RequestParam(required = false) String sortColumn,
                                                  @RequestParam(required = false) String sortType) {
         return APIResponse.okStatus(productService.getListProductShopping(page, limit, keyword, minAmount, maxAmount, categoryShopId, sortColumn, sortType));
+    }
+
+    @PutMapping(UPDATE_PRODUCT_SHOPPING)
+    public APIResponse<?> updateProductShopping(@PathVariable Integer id, @RequestBody @Valid ProductCreateRequest input) {
+        return APIResponse.okStatus(productService.updateProductShopping(id, input));
+    }
+
+    @PostMapping(EDIT_STATUS_PRODUCT_SHOPPING)
+    public APIResponse<?> editStatusProductShopping(@PathVariable Integer id) {
+        return APIResponse.okStatus(productService.editStatusProductShopping(id));
+    }
+
+    @GetMapping(GET_BY_ID_PRODUCT_SHOPPING)
+    public APIResponse<?> getByIdProductShopping(@PathVariable Integer id) {
+        return APIResponse.okStatus(productService.getByIdProductShopping(id));
     }
 }

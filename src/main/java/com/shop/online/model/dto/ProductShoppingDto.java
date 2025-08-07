@@ -38,4 +38,10 @@ public class ProductShoppingDto {
         this.description = description;
         this.categoryId = categoryId;
     }
+
+    private ProductShoppingDto(ProductShoppingDto response) {
+
+    }
+
+
 }

@@ -6,10 +6,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ShopProductImageRepository extends JpaRepository<ShopProductImage, Integer> {
 
     @Query(value = "SELECT new com.shop.online.model.dto.ShopProductImageDto(spi.id, spi.url ) " +
             " FROM ShopProductImage spi where spi.shopProduct.id=:productShoppingId")
     List<ShopProductImageDto> getListUrlImageProductShopping(Integer productShoppingId);
+
+    @Query(value = "select psi from ShopProductImage psi where psi.id = :imageProductId and psi.shopProduct.id = :productShoppingId")
+    Optional<ShopProductImage> getByImageProductShopping(Integer imageProductId, Integer productShoppingId);
 }

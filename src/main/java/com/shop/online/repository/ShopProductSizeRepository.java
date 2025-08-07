@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ShopProductSizeRepository extends JpaRepository<ShopProductSize, Integer> {
 
@@ -16,4 +17,10 @@ public interface ShopProductSizeRepository extends JpaRepository<ShopProductSize
     @Query("select coalesce(sum(pss.inventory),0) from ShopProductSize pss " +
             " where pss.shopProduct.id = :productShopId")
     Integer sumInventoryProductHBN(Integer productShopId);
+
+    @Query(value = "select pss from ShopProductSize pss  where pss.id=:sizeShopId and pss.shopProduct.id = :productShopId")
+    Optional<ShopProductSize> getByProductId(Integer sizeShopId, Integer productShopId);
+
+    @Query(value = "select pss from ShopProductSize pss where pss.size=:size and pss.shopProduct.id = :productId")
+    Optional<ShopProductSize> getBySizeAndProductId(String size, Integer productId);
 }

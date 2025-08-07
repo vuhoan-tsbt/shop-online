@@ -3,11 +3,13 @@ package com.shop.online.repository;
 import com.shop.online.entity.ShopProduct;
 import com.shop.online.model.dto.GetProductShoppingUser;
 import com.shop.online.model.dto.ProductShoppingDto;
+import com.shop.online.utils.enums.ProductEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ShopProductRepository extends JpaRepository<ShopProduct, Integer> {
@@ -55,5 +57,23 @@ public interface ShopProductRepository extends JpaRepository<ShopProduct, Intege
             " and (:fromPriceProduct is null OR sp.price >=:fromPriceProduct) " +
             " and (:toPriceProduct is null OR sp.price <=:toPriceProduct) " +
             " and (:categoryShopId is null OR sp.shopCategory.id=:categoryShopId)")
-    Page<ProductShoppingDto> getListProduct(Pageable pageable, String keyword, Float fromPriceProduct, Float toPriceProduct, Integer categoryShopId);
+    Page<ProductShoppingDto> getListProduct(Pageable pageable, String keyword, Float fromPriceProduct,
+                                            Float toPriceProduct, Integer categoryShopId);
+
+    @Query(value = "SELECT ps FROM ShopProduct ps where ps.shopCategory.id=:shopCategoryId")
+    List<ShopProduct> getByIdShopCategory(Integer shopCategoryId);
+
+    @Query(value = "SELECT ps FROM ShopProduct ps where ps.id = :productShoppingId ")
+    Optional<ShopProduct> getByIdProductAndStatusAdmin(Integer productShoppingId);
+
+    @Query(value = "SELECT new com.shop.online.model.dto.ProductShoppingDto(" +
+            "         sp.id " +
+            "        ,sp.name " +
+            "        ,sp.shopCategory.name " +
+            "        ,sp.price " +
+            "        ,sp.description " +
+            "        ,sp.shopCategory.id ) " +
+            " FROM ShopProduct sp " +
+            " where sp.id = :productShoppingId and sp.status = :status")
+    ProductShoppingDto getDetailsProductShoppingAdmin(Integer productShoppingId, ProductEnum.StatusShopping status);
 }
