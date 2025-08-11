@@ -6,12 +6,16 @@ import com.shop.online.utils.Constants;
 import com.shop.online.utils.TokenEnum;
 import com.shop.online.utils.constants.APIConstants;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.ServletException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
 import java.security.SignatureException;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,8 +24,15 @@ import java.util.Map;
 @Slf4j
 public class JwtProvider {
 
-    @Value("${app.jwt.secret}")
-    private String jwtSecret;
+//    @Value("${app.jwt.secret}")
+//    private String jwtSecret;
+
+    private final SecretKey jwtSecret;
+
+    public JwtProvider(@Value("${app.jwt.secret}") String key) {
+        this.jwtSecret = Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
+    }
+
     public boolean validateJwtToken(String authToken) throws ServletException {
         try {
             if (isTokenExpired(authToken)) {

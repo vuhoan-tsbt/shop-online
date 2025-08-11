@@ -63,48 +63,42 @@ public class WebSecurityConfig {
     }
 
     protected static final String[] AUTH_FOR_GET_METHOD = {
-            "/**/admin/auth/**",
+            "/{path1}/admin/auth/**", // Thay /**/ bằng {path1} để match 1 segment
     };
+
     protected static final String[] AUTH_FOR_POST_METHOD = {
-            "/**/user/authentication/sign-in",
-            "/**/user/authentication/access-token",
-            "/**/user/authentication/register-sponsor",
-            "/**/user/authentication/user/sign-in",
-            "/**/user/authentication/login-sponsor",
-            "/**/user/authentication/web3auth/*",
-            "/**/user/authentication/sync",
-            "/**/user/authentication/forgot-password",
-            "/**/user/authentication/change-password/{resetToken}",
-            "/**/user/authentication/verify-token/{resetToken}",
-            "/**/images/pre-signed",
-            "/**/product/product-attributes",
-            "/**/webhook/payment",
-            "/**/user/authentication/register",
-            "/**/user/authentication/login_user_email",
+            "/{path1}/user/authentication/sign-in",
+            "/{path1}/user/authentication/access-token",
+            "/{path1}/user/authentication/user/sign-in",
+            "/{path1}/user/authentication/sync",
+            "/{path1}/user/authentication/forgot-password",
+            "/user/authentication/change-password/{path:.+}", // Match mọi thứ sau change-password
+            "/{path1}/user/authentication/verify-token/{path:.+}", // Match mọi thứ sau verify-token
+            "/{path1}/webhook/payment",
+            "/{path1}/user/authentication/register",
     };
 
     protected static final String[] AUTH_WHITELIST = {
             // -- swagger ui
             "/swagger-resources",
-            "/swagger-resources/**",
+            "/swagger-resources/**", // Hợp lệ trong PathPatternParser nếu kết thúc bằng /**
             "/configuration/ui",
             "/configuration/security",
             "/webjars/**",
-            "/**/swagger-ui.html",
+            "/{path1}/swagger-ui.html",
             "/api/v2/docs",
             // Actuator
             "/actuator/**"
     };
 
     protected static final String[] AUTH_FOR_PUT_METHOD = {
-            "/**/admin/product",
-            "/**/api/v1/user/edit/{id}",
+            "/{path1}/admin/product",
+            "/{path1}/api/v1/user/edit/{path:.+}", // match toàn bộ sau edit/
     };
 
-
     protected static final String[] AUTH_FOR_LOGIN_METHOD = {
-            "/**/admin/auth/**",
-            "/**/api/v1/admin/history/**",
+            "/{path1}/admin/auth/**",
+            "/{path1}/api/v1/admin/history/{path:.+}",
     };
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
