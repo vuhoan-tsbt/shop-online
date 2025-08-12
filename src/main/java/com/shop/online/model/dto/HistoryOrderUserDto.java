@@ -16,10 +16,6 @@ public class HistoryOrderUserDto {
     private String createdAt;
     private ProductEnum.ShopOrderStatus status;
     private Integer menuNumberByStatus;
-    private Integer totalProductCost;
-    private Integer totalProductCostTicket;
-    private Integer feeShip;
-    private Float tax;
 
     public HistoryOrderUserDto(Integer orderId, BigDecimal totalMoney, LocalDateTime createdAt,
                                ProductEnum.ShopOrderStatus status) {
