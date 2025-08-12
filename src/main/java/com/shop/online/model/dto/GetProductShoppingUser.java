@@ -4,10 +4,8 @@ public interface GetProductShoppingUser {
 
     Integer getId();
     Float getPrice();
-    String getShopProductName();
+    String getName();
     String getCategoryName();
     String getImage();
-    String getCollectionName();
-    Integer getTicketNumber();
     Float getTax();
 }

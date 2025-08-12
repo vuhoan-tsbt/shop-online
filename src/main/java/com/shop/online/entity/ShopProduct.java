@@ -10,10 +10,11 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "product")
 public class ShopProduct extends BaseEntity {
+
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category shopCategory;
 

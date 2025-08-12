@@ -30,4 +30,17 @@ public class ProductEnum {
         private final String display;
 
     }
+
+    @Getter
+    @AllArgsConstructor
+    public enum ShopOrderStatus {
+        NEW,
+        PROGRESS,
+        FAIL_PAYMENT,
+        CANCELLED_TRANSFERRED,
+        DELIVERY,
+        CANCELLED_TRANSFERRING,
+        SUCCESS;
+
+    }
 }

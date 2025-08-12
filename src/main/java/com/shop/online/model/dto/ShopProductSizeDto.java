@@ -20,6 +20,7 @@ public class ShopProductSizeDto {
         this.quantity = quantity;
         this.inventory = inventory;
     }
+
     public ShopProductSizeDto(Integer id, String size, Long quantity) {
         this.id = id;
         this.size = size;

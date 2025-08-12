@@ -23,4 +23,10 @@ public interface ShopProductSizeRepository extends JpaRepository<ShopProductSize
 
     @Query(value = "select pss from ShopProductSize pss where pss.size=:size and pss.shopProduct.id = :productId")
     Optional<ShopProductSize> getBySizeAndProductId(String size, Integer productId);
+
+    @Query("select new com.shop.online.model.dto.ShopProductSizeDto(pss.id, pss.size,pss.inventory) from ShopProductSize pss " +
+            " where pss.shopProduct.id = :productShopId")
+    List<ShopProductSizeDto> getListSizeProductUser(Integer productShopId);
+
+
 }

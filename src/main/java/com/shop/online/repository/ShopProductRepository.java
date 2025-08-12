@@ -22,21 +22,19 @@ public interface ShopProductRepository extends JpaRepository<ShopProduct, Intege
             "       ,`sp`.price as price" +
             "       ,`sp`.name as name " +
             "       ,`c1`.name as categoryName " +
-            "       ,`sp`.tax as tax" +
             " FROM product `sp`  " +
-            " left join category `c` on `sp`.collection_id = `c`.id and `c`.delete_flg = 0 " +
-            " left join category `c1` on `sp`.shop_category_id = `c1`.id  " +
-            " where `c1`.type_category = 'SHOP_ONLINE' and `c1`.delete_flg = 0 " +
+            " left join category `c1` on `sp`.category_id = `c1`.id  " +
+            " where  `c1`.delete_flg = 0 " +
             " and `sp`.status='ACTIVE' " +
-            " and (:categoryId is null OR `sp`.shop_category_id = :categoryId) " +
+            " and (:categoryId is null OR `sp`.category_id = :categoryId) " +
             " and (:productShoppingName is null OR `sp`.name like %:productShoppingName%) " +
             " group by `sp`.id " +
-            " having (:fromPriceProduct is null OR sum(`sp`.price + `sp`.price*`sp`.tax/100) >=:fromPriceProduct) " +
-            " and (:toPriceProduct is null OR sum(`sp`.price + `sp`.price*`sp`.tax/100) <=:toPriceProduct) " +
+            " having (:fromPriceProduct is null OR `sp`.price  >=:fromPriceProduct) " +
+            " and (:toPriceProduct is null OR `sp`.price  <=:toPriceProduct) " +
             " order by case when (:sortBy is null) then `sp`.id end desc" +
             " ,case when (:sortBy ='SORT_UPDATED_AT') then `sp`.updated_at end desc " +
-            " ,case when (:sortBy ='SORT_PRICE_LOW') then (`sp`.price + `sp`.price*`sp`.tax/100) end asc  " +
-            " ,case when (:sortBy ='SORT_PRICE_HIGH') then (`sp`.price + `sp`.price*`sp`.tax/100) end desc, `sp`.created_at desc ", nativeQuery = true)
+            " ,case when (:sortBy ='SORT_PRICE_LOW') then `sp`.price  end asc  " +
+            " ,case when (:sortBy ='SORT_PRICE_HIGH') then `sp`.price  end desc, `sp`.created_at desc ", nativeQuery = true)
     Page<GetProductShoppingUser> getListProductShoppingUser(Pageable pageable,
                                                             Integer categoryId,
                                                             Double fromPriceProduct,
@@ -76,4 +74,19 @@ public interface ShopProductRepository extends JpaRepository<ShopProduct, Intege
             " FROM ShopProduct sp " +
             " where sp.id = :productShoppingId and sp.status = :status")
     ProductShoppingDto getDetailsProductShoppingAdmin(Integer productShoppingId, ProductEnum.StatusShopping status);
+
+    @Query(value = "SELECT new com.shop.online.model.dto.ProductShoppingDto(" +
+            "         sp.id " +
+            "        ,sp.name " +
+            "        ,sp.shopCategory.name " +
+            "        ,sp.price " +
+            "        ,sp.description " +
+            "        ,sp.shopCategory.id )" +
+            " FROM ShopProduct sp  " +
+            " where sp.id = :productShoppingId " +
+            " and sp.status = 'ACTIVE' ")
+    ProductShoppingDto getDetailsProductShoppingUser(Integer productShoppingId);
+
+    @Query(value = "SELECT ps FROM ShopProduct ps where ps.id = :productShoppingId and ps.status='ACTIVE'")
+    Optional<ShopProduct> getByIdProductAndStatus(Integer productShoppingId);
 }

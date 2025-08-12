@@ -1,5 +1,6 @@
 package com.shop.online.service;
 
+import com.shop.online.entity.User;
 import com.shop.online.repository.UserRepository;
 import com.shop.online.security.UserPrincipal;
 
@@ -99,6 +100,17 @@ public class BaseService {
         } else {
             return uri;
         }
+    }
+
+    public User getCurrentUserLogged() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = new User();
+        if (principal instanceof UserDetails) {
+            UserPrincipal userPrincipal = (UserPrincipal) principal;
+            user.setId(userPrincipal.getUserId());
+            user.setRole(userPrincipal.getRoles());
+        }
+        return user;
     }
 
 }

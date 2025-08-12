@@ -1,0 +1,8 @@
+
+- Used to enable the connection from the database to Docker.
+CREATE USER 'root'@'%' IDENTIFIED BY 'Hoan10a8@';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'your_password';
+FLUSH PRIVILEGES;

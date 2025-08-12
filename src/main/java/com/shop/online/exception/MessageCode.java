@@ -7,6 +7,7 @@ import lombok.Getter;
 public enum MessageCode implements CodeEnum {
 
     ERRORS_COMMON_001("ERRORS_COMMON_001", "Khoá học không tồn tại"),
+    ERRORS_AUTH_USER_02("ERRORS_AUTH_USER_02", "Email address not found."),
     MSG_ERR_USER_AUTH_002("MSG_ERR_USER_AUTH_002", "ユーザーが存在しません。"),
     ERRORS_AUTH_USER_04("ERRORS_AUTH_USER_04", "Tài Khoản của bạn đã bị xóa"),
     ERRORS_AUTH_NOT_FOUND("ERRORS_AUTH_NOT_FOUND", "Tài Khoản của bạn không tồn tại"),
@@ -19,7 +20,8 @@ public enum MessageCode implements CodeEnum {
             "You cannot change the name to one that is the same as a previously created product name."),
     ERRORS_UPDATE_INVENTORY_PRODUCT_SHOPPING("ERRORS_UPDATE_INVENTORY_PRODUCT_SHOPPING",
             "Cannot reduce the quantity of the product."),
-    ERRORS_NAME_AND_SIZE_PRODUCT_SHOPPING("ERRORS_NAME_AND_SIZE_PRODUCT_SHOPPING", "Duplicate product name and size.");
+    ERRORS_NAME_AND_SIZE_PRODUCT_SHOPPING("ERRORS_NAME_AND_SIZE_PRODUCT_SHOPPING", "Duplicate product name and size."),
+    ERRORS_SHOPPING_ORDER_01("ERRORS_SHOPPING_ORDER_01", "This size is out of stock. Please try a different size.");
     private final String code;
     private final String display;
 
