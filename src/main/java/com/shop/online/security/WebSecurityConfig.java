@@ -63,7 +63,8 @@ public class WebSecurityConfig {
     }
 
     protected static final String[] AUTH_FOR_GET_METHOD = {
-            "/{path1}/admin/auth/**", // Thay /**/ bằng {path1} để match 1 segment
+            "/{path1}/admin/auth/**",
+            "/{path1}/user/auth/**",
     };
 
     protected static final String[] AUTH_FOR_POST_METHOD = {
@@ -75,7 +76,7 @@ public class WebSecurityConfig {
             "/user/authentication/change-password/{path:.+}", // Match mọi thứ sau change-password
             "/{path1}/user/authentication/verify-token/{path:.+}", // Match mọi thứ sau verify-token
             "/{path1}/webhook/payment",
-            "/{path1}/user/authentication/register",
+            "/{path1}/user/auth/register",
     };
 
     protected static final String[] AUTH_WHITELIST = {
