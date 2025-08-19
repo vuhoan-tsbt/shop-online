@@ -1,5 +1,6 @@
 package com.shop.online.controller;
 
+import com.shop.online.kafka.OrderPublisher;
 import com.shop.online.model.APIResponse;
 import com.shop.online.model.PageInfo;
 import com.shop.online.model.dto.HistoryOrderUserDto;
@@ -19,6 +20,7 @@ import java.util.List;
 public class UserOrderShopController {
 
     private final UserOrderShopService userOrderShopService;
+    private final OrderPublisher orderPublisher;
 
     private static final String USER_ORDER_SHOPPING = "/order";
     private static final String USER_HISTORY_ORDER_SHOPPING = "/history-order";
@@ -26,6 +28,9 @@ public class UserOrderShopController {
 
     @PostMapping(USER_ORDER_SHOPPING)
     public APIResponse<?> userOrder(@RequestBody UserOrderShoppingRequest input) {
+        Integer userId = userOrderShopService.getCurrentUserLogged().getId();
+        input.setUserId(userId);
+        orderPublisher.publishOrder(input);
         return APIResponse.okStatus(userOrderShopService.userOrder(input));
     }
 

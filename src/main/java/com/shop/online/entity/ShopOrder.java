@@ -17,6 +17,9 @@ public class ShopOrder extends BaseEntity {
 
     private String email;
 
+    @Column(nullable = false, unique = true, updatable = false)
+    private String orderId;
+
     private String userName;
 
     @Column(name = "delivery_address", columnDefinition = "TEXT")
@@ -26,9 +29,7 @@ public class ShopOrder extends BaseEntity {
     @Column(name = "status")
     private ProductEnum.ShopOrderStatus status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Integer userId;
 
     @Column(name = "total_amount")
     private BigDecimal totalAmount;

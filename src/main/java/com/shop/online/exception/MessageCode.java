@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 public enum MessageCode implements CodeEnum {
 
-    ERRORS_COMMON_001("ERRORS_COMMON_001", "Khoá học không tồn tại"),
+    ERRORS_COMMON_001("ERRORS_COMMON_001", "Sản phẩm không tồn tại"),
     ERRORS_AUTH_USER_02("ERRORS_AUTH_USER_02", "Email address not found."),
     MSG_ERR_USER_AUTH_002("MSG_ERR_USER_AUTH_002", "ユーザーが存在しません。"),
     ERRORS_AUTH_USER_04("ERRORS_AUTH_USER_04", "Tài Khoản của bạn đã bị xóa"),

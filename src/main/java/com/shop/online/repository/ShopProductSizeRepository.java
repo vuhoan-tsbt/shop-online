@@ -2,7 +2,9 @@ package com.shop.online.repository;
 
 import com.shop.online.entity.ShopProductSize;
 import com.shop.online.model.dto.ShopProductSizeDto;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public interface ShopProductSizeRepository extends JpaRepository<ShopProductSize
     @Query(value = "select pss from ShopProductSize pss  where pss.id=:sizeShopId and pss.shopProduct.id = :productShopId")
     Optional<ShopProductSize> getByProductId(Integer sizeShopId, Integer productShopId);
 
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query(value = "select pss from ShopProductSize pss where pss.size=:size and pss.shopProduct.id = :productId")
     Optional<ShopProductSize> getBySizeAndProductId(String size, Integer productId);
 

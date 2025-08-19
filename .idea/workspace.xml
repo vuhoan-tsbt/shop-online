@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="491084dd-1012-43cb-b6e7-180231dfb80b" name="Changes" comment="">
+    <list default="true" id="491084dd-1012-43cb-b6e7-180231dfb80b" name="Changes" comment="update S3 and create auth user">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1.0__INIT_ALL_TABLE.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/controller/UploadFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/controller/UploadFileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/entity/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/DataInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/DataInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/config/FlywayConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/config/FlywayConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/controller/UserOrderShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/controller/UserOrderShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/entity/ShopOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/entity/ShopOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/exception/MessageCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/exception/MessageCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/service/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/service/BaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/service/S3Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/service/S3Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/model/request/UserOrderShoppingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/model/request/UserOrderShoppingRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/repository/ShopProductSizeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/repository/ShopProductSizeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/repository/ShoppingOrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/repository/ShoppingOrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/service/ShopProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/service/ShopProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/online/service/UserOrderShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/online/service/UserOrderShopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.mgration/init.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/db.mgration/init.sql" beforeDir="false" />
     </list>
@@ -32,8 +41,21 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;vuhoan-tsbt&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/vuhoan-tsbt/shop-online.git&quot;,
+    &quot;accountId&quot;: &quot;9cc41794-597c-4bce-b44c-2968018d57b6&quot;
+  }
+}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
@@ -48,39 +70,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.shop_online [package].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ShopOnlineApplication.executor": "Debug",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.49321705",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.shop_online [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.shop_online [package].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ShopOnlineApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/shop-online/src/main/resources/db.mgration&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.49321705&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\shop-online\src\main\resources\db.mgration" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\shop-online\src\main\resources\db\migration" />
       <recent name="D:\shop-online\src\main\resources" />
       <recent name="D:\shop-online\shop-online\src\main\resources" />
       <recent name="C:\Users\hoanvn1\Downloads\edu_en-main\edu_en-main\src\main\java\com\en\edu\controller" />
       <recent name="C:\Users\hoanvn1\Downloads\edu_en-main\edu_en-main\src\main\java\com\en\edu\service" />
-      <recent name="C:\Users\hoanvn1\Downloads\edu_en-main\edu_en-main\src\main\java\com\en\edu\config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.shop.online.repository" />
@@ -149,11 +180,92 @@
       <workItem from="1754359116757" duration="702000" />
       <workItem from="1754359892051" duration="101000" />
       <workItem from="1754360928705" duration="735000" />
-      <workItem from="1754401003499" duration="4429000" />
+      <workItem from="1754401003499" duration="4607000" />
+      <workItem from="1754487195402" duration="6105000" />
+      <workItem from="1754573376964" duration="8837000" />
+      <workItem from="1754724125865" duration="1151000" />
+      <workItem from="1754921988786" duration="3360000" />
+      <workItem from="1755004561608" duration="9114000" />
+      <workItem from="1755091946174" duration="6525000" />
+      <workItem from="1755180549587" duration="6238000" />
+      <workItem from="1755267494289" duration="4416000" />
+      <workItem from="1755308548348" duration="2104000" />
+      <workItem from="1755348862557" duration="12416000" />
+      <workItem from="1755434829844" duration="5888000" />
+      <workItem from="1755522351369" duration="4562000" />
+      <workItem from="1755526947322" duration="2482000" />
+      <workItem from="1755610574535" duration="3332000" />
     </task>
+    <task id="LOCAL-00001" summary="create product and upload image S3">
+      <option name="closed" value="true" />
+      <created>1754406344436</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754406344436</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix api product and auth">
+      <option name="closed" value="true" />
+      <created>1754493464126</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754493464126</updated>
+    </task>
+    <task id="LOCAL-00003" summary="create category and update product">
+      <option name="closed" value="true" />
+      <created>1754581388892</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754581388892</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update security">
+      <option name="closed" value="true" />
+      <created>1754923571505</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754923571506</updated>
+    </task>
+    <task id="LOCAL-00005" summary="create user order">
+      <option name="closed" value="true" />
+      <created>1755013467882</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1755013467882</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update dto">
+      <option name="closed" value="true" />
+      <created>1755014265519</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1755014265519</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update S3 and create auth user">
+      <option name="closed" value="true" />
+      <created>1755187047981</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1755187047981</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="create product and upload image S3" />
+    <MESSAGE value="fix api product and auth" />
+    <MESSAGE value="create category and update product" />
+    <MESSAGE value="update security" />
+    <MESSAGE value="create user order" />
+    <MESSAGE value="update dto" />
+    <MESSAGE value="update S3 and create auth user" />
+    <option name="LAST_COMMIT_MESSAGE" value="update S3 and create auth user" />
   </component>
 </project>

@@ -86,6 +86,9 @@ public class ShopProductService extends BaseService {
             keyword = this.convertKeyword(keyword);
         }
         Page<ProductShoppingDto> result = shopProductRepository.getListProduct(pageRequest, StringRanDom.isNullOrEmpty(keyword) ? null : keyword.trim(), minAmount, maxAmount, categoryShopId);
+        if (result == null) {
+            return new PageInfo<>();
+        }
         result.forEach(p -> {
             ShopProductImageDto dto = shopProductImageRepository.getListUrlImageProductShopping(p.getId()).get(0);
             p.setImage(this.buildCloudFrontImageUri(dto.getUrl()));
@@ -96,8 +99,10 @@ public class ShopProductService extends BaseService {
             p.setTotalInventory(totalInventory);
         });
 
+
         return PageUtils.pagingResponse(result);
     }
+
     @Transactional(rollbackFor = ServiceApiException.class)
     public Object updateProductShopping(Integer id, @Valid ProductCreateRequest input) {
         Optional<ShopProduct> opt = shopProductRepository.getByIdProductAndStatusAdmin(id);
