@@ -59,3 +59,39 @@ services:
       - "8081:8001"
     depends_on:
       - redis
+
+  db:
+    image: mysql:8.0.43
+    container_name: shop-online-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: shop_online
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: shop_online
+      MYSQL_PASSWORD: shop_user_123
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: shop-online-app
+#    ports:
+#      - "8086:8086"
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/shop_online?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: Hoan10a8@
+#      SPRING_JPA_HIBERNATE_DDL_AUTO: none
+#      SPRING_REDIS_HOST: redis
+#      SPRING_REDIS_PORT: 6379
+#      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+#    depends_on:
+#      - db
+#      - redis
+#      - kafka
+volumes:
+  mysql_data:
